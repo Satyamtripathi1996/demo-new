@@ -1,5 +1,3 @@
-# Variables for the Frontend module (S3 + CloudFront)
-
 variable "app_name" {
   description = "Application name (used in resource names/tags)"
   type        = string
@@ -11,18 +9,18 @@ variable "environment" {
 }
 
 variable "bucket_name" {
-  description = "Optional custom bucket name (must be globally unique). If null, module generates a name."
+  description = "Optional custom bucket name (must be globally unique)"
   type        = string
   default     = null
 }
 
 variable "aliases" {
-  description = "CloudFront alternate domain names (e.g., root + app subdomain)"
+  description = "CloudFront alternate domain names (root + app)"
   type        = list(string)
 }
 
 variable "acm_certificate_arn" {
-  description = "ACM cert ARN (must be in us-east-1 for CloudFront)"
+  description = "ACM certificate ARN (must be in us-east-1 for CloudFront)"
   type        = string
 }
 
@@ -39,7 +37,7 @@ variable "price_class" {
 }
 
 variable "spa_routing" {
-  description = "If true, route 403/404 to /index.html (SPA routing)"
+  description = "SPA routing fallback (403/404 -> /index.html)"
   type        = bool
   default     = true
 }
