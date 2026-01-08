@@ -1,30 +1,27 @@
-########################################
-# Frontend (CloudFront + S3)
-########################################
+locals {
+  app_fqdn = "app.${var.domain_name}"
+}
+
 module "frontend" {
   source = "../modules/frontend"
 
   app_name     = var.app_name
   environment  = var.environment
+  bucket_name  = var.frontend_bucket_name
 
-  # Optional custom bucket name (keep null to auto-generate inside module)
-  bucket_name = var.frontend_bucket_name
-
-  # CloudFront alternate domain names (root + app subdomain)
+  # Root + app subdomain on SAME distribution
   aliases = [
     var.domain_name,
-    "app.${var.domain_name}"
+    local.app_fqdn
   ]
 
-  # IMPORTANT: CloudFront ACM certificate must be from us-east-1
+  # IMPORTANT: CloudFront ACM certificate must be from us-east-1 (your acm_cloudfront module)
   acm_certificate_arn = module.acm_cloudfront.certificate_arn
 
-  # Optional tuning
-  enable_ipv6   = var.enable_ipv6
-  price_class   = var.price_class
-  spa_routing   = true
+  enable_ipv6  = var.enable_ipv6
+  price_class  = var.price_class
 
-  # Optional CloudFront Function (viewer-request) based router
+  spa_routing                  = true
   enable_domain_router_function = false
 
   tags = local.common_tags
