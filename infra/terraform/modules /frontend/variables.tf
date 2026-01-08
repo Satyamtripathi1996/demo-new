@@ -1,15 +1,19 @@
+########################################
+# Frontend module variables
+########################################
+
 variable "app_name" {
-  description = "Application name (used in resource names/tags)"
+  description = "Application name (used in naming/tags)"
   type        = string
 }
 
 variable "environment" {
-  description = "Deployment environment (dev, prod, etc.)"
+  description = "Environment name (dev/prod/etc.)"
   type        = string
 }
 
 variable "bucket_name" {
-  description = "Optional custom bucket name (must be globally unique)"
+  description = "Optional custom bucket name (must be globally unique). If null, module will create a generated name."
   type        = string
   default     = null
 }
@@ -20,7 +24,7 @@ variable "aliases" {
 }
 
 variable "acm_certificate_arn" {
-  description = "ACM certificate ARN (must be in us-east-1 for CloudFront)"
+  description = "ACM certificate ARN (MUST be in us-east-1 for CloudFront)"
   type        = string
 }
 
@@ -37,13 +41,13 @@ variable "price_class" {
 }
 
 variable "spa_routing" {
-  description = "SPA routing fallback (403/404 -> /index.html)"
+  description = "If true, route 403/404 to /index.html (SPA routing fallback)"
   type        = bool
   default     = true
 }
 
 variable "enable_domain_router_function" {
-  description = "Optional CloudFront Function (viewer-request) for domain routing"
+  description = "Optional CloudFront Function (viewer-request) to route domains"
   type        = bool
   default     = false
 }

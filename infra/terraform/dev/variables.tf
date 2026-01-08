@@ -55,3 +55,10 @@ variable "api_image_tag" {
   type        = string
   default     = "latest"
 }
+
+variable "secrets_arns" {
+  description = "Secrets Manager ARNs that ECS task can read"
+  type        = list(string)
+  default     = []
+}
+
