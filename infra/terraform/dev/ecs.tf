@@ -1,9 +1,9 @@
 module "ecs" {
   source = "../modules/ecs"
 
-  app_name     = var.app_name
-  environment  = var.environment
-  aws_region   = var.aws_region
+  app_name    = var.app_name
+  environment = var.environment
+  aws_region  = var.aws_region
 
   private_subnet_ids = module.networking.private_subnet_ids
   ecs_sg_id          = module.networking.ecs_sg_id

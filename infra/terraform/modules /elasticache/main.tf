@@ -38,9 +38,9 @@ resource "aws_elasticache_replication_group" "this" {
   port                       = 6379
   automatic_failover_enabled = false
 
-  num_cache_clusters   = 1
-  subnet_group_name    = aws_elasticache_subnet_group.this.name
-  security_group_ids   = [aws_security_group.redis.id]
+  num_cache_clusters = 1
+  subnet_group_name  = aws_elasticache_subnet_group.this.name
+  security_group_ids = [aws_security_group.redis.id]
 
   tags = var.tags
 }

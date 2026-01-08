@@ -41,9 +41,9 @@ resource "aws_s3_bucket_policy" "docs" {
     Version = "2012-10-17"
     Statement = [
       {
-        Sid    = "AllowCloudFrontRead"
-        Effect = "Allow"
-        Action = ["s3:GetObject"]
+        Sid      = "AllowCloudFrontRead"
+        Effect   = "Allow"
+        Action   = ["s3:GetObject"]
         Resource = "${aws_s3_bucket.docs.arn}/*"
         Principal = {
           AWS = aws_cloudfront_origin_access_identity.docs_oai.iam_arn

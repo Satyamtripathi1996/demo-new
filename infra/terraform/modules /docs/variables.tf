@@ -1,5 +1,18 @@
-variable "app_name" { type = string }
-variable "environment" { type = string }
+#############################################
+# Docs module variables
+# - Creates docs.<domain> static site (S3 + CloudFront)
+# - Uses ACM certificate from us-east-1 (required by CloudFront)
+#############################################
+
+variable "app_name" {
+  description = "Application name (used in resource names/tags)"
+  type        = string
+}
+
+variable "environment" {
+  description = "Deployment environment (dev, prod, etc.)"
+  type        = string
+}
 
 variable "domain_name" {
   description = "Root domain (example.com). Docs will be docs.<domain>"
@@ -17,8 +30,26 @@ variable "acm_certificate_arn" {
   type        = string
 }
 
-variable "enable_ipv6" { type = bool default = true }
-variable "price_class" { type = string default = "PriceClass_100" }
-variable "spa_routing" { type = bool default = true }
+variable "enable_ipv6" {
+  description = "Enable IPv6 for CloudFront distribution"
+  type        = bool
+  default     = true
+}
 
-variable "tags" { type = map(string) default = {} }
+variable "price_class" {
+  description = "CloudFront price class"
+  type        = string
+  default     = "PriceClass_100"
+}
+
+variable "spa_routing" {
+  description = "If true, route 403/404 to index.html (SPA routing)"
+  type        = bool
+  default     = true
+}
+
+variable "tags" {
+  description = "Common tags"
+  type        = map(string)
+  default     = {}
+}
