@@ -23,7 +23,7 @@ module "route53_records" {
   source = "../modules/route53"
 
   create_zone = false
-  zone_id     = module.route53_zone.hosted_zone_id
+  zone_id     = var.existing_zone_id   # important: use existing zone id directly
   domain_name = var.domain_name
 
   tags = local.common_tags
@@ -34,12 +34,12 @@ module "route53_records" {
   api_alb_zone_id   = module.alb.alb_zone_id
 
   # Root + app -> Frontend CloudFront
-  create_frontend_records       = true
+  create_frontend_records         = true
   frontend_cloudfront_domain_name = module.frontend.cloudfront_domain_name
   frontend_cloudfront_zone_id     = module.frontend.cloudfront_hosted_zone_id
 
   # docs -> Docs CloudFront
-  create_docs_record            = true
-  docs_cloudfront_domain_name   = module.docs.cloudfront_domain_name
-  docs_cloudfront_zone_id       = module.docs.cloudfront_hosted_zone_id
+  create_docs_record          = true
+  docs_cloudfront_domain_name = module.docs.cloudfront_domain_name
+  docs_cloudfront_zone_id     = module.docs.cloudfront_hosted_zone_id
 }
