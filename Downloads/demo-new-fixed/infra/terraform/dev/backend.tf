@@ -3,7 +3,7 @@ terraform {
     bucket = "vursa-terraform-state-prod"
     key    = "dev/terraform.tfstate"
     region = "ap-south-1"
+
     use_lockfile = true
-     dynamodb_table = "terraform-locks"
   }
 }
