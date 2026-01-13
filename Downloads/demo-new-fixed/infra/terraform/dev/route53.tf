@@ -29,7 +29,7 @@ module "route53_records" {
   tags = local.common_tags
 
   # API -> ALB
-  create_api_record = true
+  create_api_record = false
   api_alb_dns_name  = module.alb.alb_dns_name
   api_alb_zone_id   = module.alb.alb_zone_id
 
