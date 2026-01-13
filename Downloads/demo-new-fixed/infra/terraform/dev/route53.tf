@@ -23,13 +23,13 @@ module "route53_records" {
   source = "../modules/route53"
 
   create_zone = false
-  zone_id     = var.existing_zone_id   # important: use existing zone id directly
+  zone_id     = var.existing_zone_id   # ✅ safest for existing zone
   domain_name = var.domain_name
 
   tags = local.common_tags
 
   # API -> ALB
-  create_api_record = false
+  create_api_record = true
   api_alb_dns_name  = module.alb.alb_dns_name
   api_alb_zone_id   = module.alb.alb_zone_id
 
