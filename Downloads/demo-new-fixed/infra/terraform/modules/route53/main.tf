@@ -16,6 +16,7 @@ locals {
 ########################################
 resource "aws_route53_record" "api" {
   count   = var.create_api_record ? 1 : 0
+  allow_overwrite = true   # Added this line
   zone_id = local.hosted_zone_id
   name    = "api.${var.domain_name}"
   type    = "A"
@@ -32,6 +33,7 @@ resource "aws_route53_record" "api" {
 ########################################
 resource "aws_route53_record" "root_frontend" {
   count   = var.create_frontend_records ? 1 : 0
+  allow_overwrite = true   # Added this line
   zone_id = local.hosted_zone_id
   name    = var.domain_name
   type    = "A"
@@ -45,6 +47,7 @@ resource "aws_route53_record" "root_frontend" {
 
 resource "aws_route53_record" "app_frontend" {
   count   = var.create_frontend_records ? 1 : 0
+  allow_overwrite = true   # Added this line
   zone_id = local.hosted_zone_id
   name    = "app.${var.domain_name}"
   type    = "A"
@@ -61,6 +64,7 @@ resource "aws_route53_record" "app_frontend" {
 ########################################
 resource "aws_route53_record" "docs_frontend" {
   count   = var.create_docs_record ? 1 : 0
+  allow_overwrite = true   # Added this line
   zone_id = local.hosted_zone_id
   name    = "docs.${var.domain_name}"
   type    = "A"
