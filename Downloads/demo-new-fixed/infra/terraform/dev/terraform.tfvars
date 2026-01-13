@@ -2,9 +2,9 @@ aws_region   = "ap-south-1"
 environment  = "dev"
 app_name     = "vursa"
 
+domain_name        = "vursa.dev"
 create_hosted_zone = false
 existing_zone_id   = "Z07384293LTZ2OHY95IXM"
-domain_name        = "vursa.dev"
 
 tags = {
   Project = "vursa"
@@ -20,10 +20,10 @@ health_check_path = "/health"
 
 db_name     = "vursa"
 db_username = "vursaadmin"
-db_password = "CHANGE_ME_STRONG_PASSWORD"
+db_password = "REPLACE_WITH_STRONG_PASSWORD"
 
 uploads_bucket_name  = "vursa-user-docs-dev-etop-9f3a12"
 api_image_tag        = "latest"
 
-frontend_bucket_name = "vursa-frontend-dev-etop-9f3a12"
-docs_bucket_name     = "vursa-docs-dev-etop-9f3a12"
+frontend_bucket_name = "vursa-frontend-dev"
+docs_bucket_name     = "vursa-docs-dev"
