@@ -3,8 +3,8 @@
 This repository contains Terraform code for VURSA infrastructure using a modular architecture (ACM, ALB, ECS, Route53, S3, Networking, RDS, etc.).  
 The project is designed to support multiple environments (e.g., **dev** and **prod**) with the **same modules**, while keeping environment-specific configuration isolated.
 
-✅ **Remote Terraform State is stored in S3**, so the state is not lost even if local files are deleted.  
-✅ PR-based workflow is recommended for management review.
+ **Remote Terraform State is stored in S3**, so the state is not lost even if local files are deleted.  
+ PR-based workflow is recommended for management review.
 
 ---
 
